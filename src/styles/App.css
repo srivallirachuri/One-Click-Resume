@@ -1,0 +1,335 @@
+/* RESET AND BASE STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Using a modern, geometric font if available (e.g., 'Inter' or 'Poppins') */
+  font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+html,
+body,
+#root {
+  height: 100%; /* Ensures the body and React root element take full height */
+  width: 100%; /* Ensures the body and React root element take full width */
+}
+
+:root {
+  --color-primary: #00a884; /* Deep Emerald Green Accent - Unique! */
+  --color-secondary: #8c9fae; /* Muted Grey */
+  --color-background: #eef1f5; /* Light, cool grey background */
+  --color-sidebar: #2c3e50; /* Deep Charcoal Sidebar (retained dark feel) */
+  --color-text: #343a40;
+  --color-form-bg: #ffffff;
+  --color-shadow-subtle: rgba(0, 0, 0, 0.08);
+  --color-shadow-deep: rgba(0, 0, 0, 0.2);
+  --color-input-border: #d0d7de;
+}
+
+/* --- 1. GLOBAL LAYOUT --- */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+.section-title {
+  color: var(--color-primary);
+}
+
+.main-content {
+  display: flex;
+  flex-grow: 1;
+  padding: 35px; /* Increased padding */
+  gap: 40px;
+}
+
+.form-area {
+  flex: 1;
+  max-width: 480px; /* Wider input area */
+  padding-right: 30px;
+}
+
+.preview-area {
+  flex: 2;
+  padding-left: 30px;
+  background-color: #f7f9fb;
+  border-radius: 12px; /* More rounded corners */
+}
+/* --- 2. SIDEBAR (Navigation & Controls) --- */
+.sidebar {
+  width: 300px; /* Slightly wider */
+  background-color: var(--color-sidebar);
+  color: white;
+  padding: 30px;
+  flex-shrink: 0;
+  box-shadow: 8px 0 20px var(--color-shadow-deep); /* Stronger vertical shadow */
+}
+
+.sidebar h2 {
+  color: var(--color-primary);
+  margin-bottom: 30px;
+  border-bottom: 3px solid var(--color-primary); /* Thicker underline */
+  padding-bottom: 12px;
+  font-weight: 700;
+}
+
+.sidebar h3 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 1.15em;
+  color: #b0e5d8; /* Lightened primary color for contrast */
+}
+
+.tab-control label,
+.format-selection label {
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.tab-control label:hover {
+  color: var(--color-primary);
+  transform: translateX(3px); /* Subtle shift on hover */
+}
+
+.tab-status {
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+/* --- 3. FORM INPUT STYLES --- */
+.form-area h2 {
+  color: var(--color-text);
+  margin-bottom: 30px;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.form-section,
+.data-section {
+  background-color: var(--color-form-bg);
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 10px; /* Softer radius */
+  box-shadow: 0 5px 15px var(--color-shadow-subtle);
+  border-left: 5px solid var(--color-primary); /* Bold left border accent */
+}
+
+.form-section h4,
+.data-section h3 {
+  color: var(--color-text); /* Use dark text color for headings */
+  margin-bottom: 15px;
+  padding-left: 0;
+  border-left: none;
+  font-weight: 600;
+}
+/* FIX PREVIEW TEXT VISIBILITY */
+.resume-paper,
+.resume-paper * {
+  color: #111 !important;
+}
+
+.form-section input,
+.form-list-section input,
+.form-list-section textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid var(--color-input-border);
+  border-radius: 6px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #fcfcfc;
+}
+
+.form-section input:focus,
+.form-list-section input:focus,
+.form-list-section textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 168, 132, 0.2); /* Green focus ring */
+  outline: none;
+}
+
+/* Button Refinement */
+.delete-btn {
+  background-color: #dc3545;
+  /* ... rest unchanged */
+}
+
+.add-btn {
+  background-color: var(--color-primary); /* Green accent */
+  transition: background-color 0.3s;
+}
+
+.add-btn:hover {
+  background-color: #008a6b;
+}
+/* --- 4. RESUME PREVIEW (Modern Format Focus) --- */
+
+.resume-paper {
+  /* Keep dimensions */
+  box-shadow: 0 15px 35px var(--color-shadow-subtle); /* Flatter look */
+  padding: 50px 45px; /* Increased padding */
+  margin: 30px auto;
+}
+
+.resume-paper {
+  color: #111 !important; /* Force readable dark text */
+}
+
+.resume-paper p,
+.resume-paper li,
+.resume-paper h4 {
+  color: #111 !important;
+}
+
+.resume-format-modern .duration {
+  color: #555 !important; /* Medium grey for readability */
+}
+
+.resume-format-modern {
+  font-size: 10.5pt;
+  line-height: 1.6;
+}
+
+.resume-format-modern .resume-name {
+  font-size: 3em;
+  font-weight: 800; /* Very bold name */
+  color: var(--color-sidebar);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px; /* Tighter spacing for a modern look */
+}
+
+.resume-format-modern .section-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+
+  /* UNIQUE STYLE: Thin line below the title, with extra padding */
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 5px;
+  margin: 35px 0 15px 0;
+  letter-spacing: 0.5px;
+}
+
+.resume-format-modern .experience-item {
+  margin-bottom: 22px; /* Increased spacing between items */
+}
+
+.resume-format-modern .experience-item h4 {
+  font-size: 1.15em;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 3px;
+}
+
+.resume-format-modern .duration {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--color-secondary);
+  font-size: 0.9em;
+  margin-bottom: 8px;
+}
+
+/* PDF Export Button */
+.pdf-export-btn {
+  padding: 18px 15px;
+  background-color: var(--color-primary);
+  /* ... rest unchanged */
+  box-shadow: 0 6px 15px rgba(0, 168, 132, 0.4);
+}
+
+.pdf-export-btn:hover {
+  background-color: #008a6b;
+  transform: translateY(-2px);
+}
+/* --- Global Heading/Title Fixes --- */
+
+.main-content h2 {
+  /* Target the 'Enter Details' and 'Resume Preview' headings */
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--color-sidebar); /* Use a dark, high-contrast color */
+  margin-bottom: 30px; /* Ensure space below the heading */
+  padding-left: 5px; /* Small padding adjustment */
+}
+
+.preview-area h2 {
+  /* Specifically target the 'Resume Preview' heading */
+  margin-bottom: 25px;
+  /* If the background is too light, you need a dark color */
+  color: var(--color-text);
+}
+/* --------------------------------------------- */
+/* ✨ CLEAN, MINIMAL LOOK FOR PROJECTS, INTERNSHIPS, EDUCATION */
+/* --------------------------------------------- */
+
+.data-section {
+  background-color: var(--color-form-bg);
+  padding: 18px 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: none !important; /* Remove big shadow */
+  border-left: none !important; /* Remove bold left border */
+  border: 1px solid #e3e7eb; /* Light minimalist border */
+}
+
+.list-item-card {
+  background: #f9fafb;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  border: 1px solid #e5e8ec;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list-item-card input,
+.list-item-card textarea {
+  border: 1px solid var(--color-input-border);
+  background: #ffffff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.list-item-card textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+/* Make buttons small, clean, like Skill style */
+.add-btn {
+  padding: 10px 14px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #008a6b;
+}
+
+.delete-btn {
+  width: fit-content;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #b4212f;
+}
+
+/* Align inputs like modern skills style */
+.data-section h3 {
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 18px;
+}
